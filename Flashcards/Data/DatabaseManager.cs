@@ -2,6 +2,7 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System.Collections;
+using Flashcards.Models;
 
 namespace Flashcards.Data;
 internal class DatabaseManager
@@ -32,13 +33,23 @@ internal class DatabaseManager
         }
     }
 
-    internal List<Stack> ViewAllStacks()
+    internal List<StackOfFlashcards> GetAllStacks()
     {
         using var connection = new SqlConnection(_connectionString);
         connection.Open();
         var selectQuery = "SELECT * FROM Stacks";
-        var list = connection.Query<Stack>(selectQuery).ToList();
+        var list = connection.Query<StackOfFlashcards>(selectQuery).ToList();
 
         return list;
+    }
+
+    internal int CreateStack(StackOfFlashcards newStack)
+    {
+        using var connection = new SqlConnection(_connectionString);
+        connection.Open();
+        var createQuery = $"INSERT INTO Stacks (Name) VALUES (@Name)";
+
+        var affectedRows = connection.Execute(createQuery, newStack);
+        return affectedRows;
     }
 }

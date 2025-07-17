@@ -1,16 +1,20 @@
-﻿using Spectre.Console;
+﻿using Flashcards.Controller;
+using Spectre.Console;
 using static Flashcards.Enums;
 
 namespace Flashcards.View;
 
 public class UserInterface
 {
+    private readonly StackController _stackController = new();
     internal void MainMenu()
     {
         bool isUserFinished = false;
 
         while (!isUserFinished)
         {
+            Console.Clear();
+
             var choice = AnsiConsole.Prompt(
                 new SelectionPrompt<MenuOptions>()
                 .Title("Main Menu")
@@ -23,6 +27,7 @@ public class UserInterface
                     isUserFinished = true;
                     break;
                 case MenuOptions.ViewStacks:
+                    _stackController.ViewStacks();
                     StacksMenu();
                     break;
                 case MenuOptions.ViewFlashcards:
@@ -55,12 +60,12 @@ public class UserInterface
                 case StacksMenuOptions.Return:
                     userWantsToReturnToMainMenu = true;
                     break;
-                //case MenuOptions.ViewStacks:
-                //    StacksMenu();
-                //    break;
-                //case MenuOptions.ViewFlashcards:
-                //    FlashcardsMenu();
-                //    break;
+                case StacksMenuOptions.AddStack:
+                    _stackController.AddStack();
+                    break;
+                    //case MenuOptions.ViewFlashcards:
+                    //    FlashcardsMenu();
+                    //    break;
 
             }
 

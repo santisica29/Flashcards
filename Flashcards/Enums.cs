@@ -20,6 +20,8 @@ internal class Enums
     {
         [Description("Return to Main Menu")]
         Return,
+        [Description("Add a stack")]
+        AddStack,
         [Description("Change current stack")]
         ChangeStack,
         [Description("View All the Flashcards in the current stack")]
