@@ -17,9 +17,40 @@ public class UserInterface
                 .UseConverter(e => Helpers.GetEnumDescription(e))
                 .AddChoices(Enum.GetValues<MenuOptions>()));
 
-            
+            switch (choice)
+            {
+                case MenuOptions.Exit:
+                    isUserFinished = true;
+                    break;
+                case MenuOptions.ViewStacks:
+                    StacksMenu();
+                    break;
+                case MenuOptions.ViewFlashcards:
+                    FlashcardsMenu();
+                    break;
+
+            }
+            ;
+            var answer = choice switch
+            {
+                MenuOptions.Exit => 
+                MenuOptions.ViewStacks => StacksMenu(),
+                MenuOptions.ViewFlashcards => FlashcardsMenu(),
+                MenuOptions.Study => throw new NotImplementedException(),
+                MenuOptions.ViewStudyData => throw new NotImplementedException(),
+                _ => throw new NotImplementedException(),
+            };
+
         }
 
+    }
+    internal void FlashcardsMenu()
+    {
+        throw new NotImplementedException();
+    }
 
+    internal void StacksMenu()
+    {
+        
     }
 }

@@ -15,4 +15,20 @@ internal class Enums
         ViewStudyData,
         Exit
     }
+
+    public enum StacksMenuOptions
+    {
+        [Description("Return to Main Menu")]
+        Return,
+        [Description("Change current stack")]
+        ChangeStack,
+        [Description("View All the Flashcards in the current stack")]
+        ViewAllFlashcardsInStack,
+        [Description("Create a new Flashcard in the current stack")]
+        CreateFlashcardInStack,
+        [Description("Edit a Flashcard in the current stack")]
+        EditFlashcard,
+        [Description("Delete a Flashcard in the current stack")]
+        DeleteFlashcard,
+    }
 }
