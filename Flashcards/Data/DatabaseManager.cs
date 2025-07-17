@@ -18,7 +18,6 @@ internal class DatabaseManager
 
     internal void ConnectToDatabase()
     {
-
         try
         {
             using var connection = new SqlConnection(_connectionString);
@@ -29,7 +28,10 @@ internal class DatabaseManager
         {
             Console.WriteLine(ex);
         }
-        
+    }
+
+    internal List<Stacks> ViewAllStacks()
+    {
 
     }
 }
