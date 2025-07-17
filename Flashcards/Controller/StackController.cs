@@ -17,8 +17,11 @@ internal class StackController
 
         foreach (var stack in list)
         {
-            AnsiConsole.MarkupLine($"{stack}");
+            AnsiConsole.MarkupLine($"{stack.Id} {stack.Name}");
         }
+
+        Console.ReadKey();
+
     }
 
     internal void AddStack()
@@ -32,11 +35,25 @@ internal class StackController
             name = Console.ReadLine();
         }
 
-        StackOfFlashcards newStack = new(name);
+        CardStack newStack = new(name);
 
         var affectedRows = _databaseManager.CreateStack(newStack);
 
         if (affectedRows > 0) Console.WriteLine("it worked");
         else Console.WriteLine("something went wrong");
+    }
+
+    internal void DeleteStack()
+    {
+        ViewStacks();
+
+        Console.WriteLine("Choose the id to delete it");
+        int id = Int32.Parse(Console.ReadLine());
+
+        var affectedRows = _databaseManager.DeleteStack(id);
+
+        if (affectedRows > 0) Console.WriteLine("Deleted succesfully");
+        else Console.WriteLine("Something went wrong");
+
     }
 }

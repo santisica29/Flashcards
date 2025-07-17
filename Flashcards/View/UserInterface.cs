@@ -63,6 +63,9 @@ public class UserInterface
                 case StacksMenuOptions.AddStack:
                     _stackController.AddStack();
                     break;
+                case StacksMenuOptions.DeleteStack:
+                    _stackController.DeleteStack();
+                    break;
                     //case MenuOptions.ViewFlashcards:
                     //    FlashcardsMenu();
                     //    break;

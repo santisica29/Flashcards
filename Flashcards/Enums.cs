@@ -22,15 +22,17 @@ internal class Enums
         Return,
         [Description("Add a stack")]
         AddStack,
-        [Description("Change current stack")]
-        ChangeStack,
-        [Description("View All the Flashcards in the current stack")]
-        ViewAllFlashcardsInStack,
-        [Description("Create a new Flashcard in the current stack")]
-        CreateFlashcardInStack,
-        [Description("Edit a Flashcard in the current stack")]
-        EditFlashcard,
-        [Description("Delete a Flashcard in the current stack")]
-        DeleteFlashcard,
+        //[Description("Change current stack")]
+        //ChangeStack,
+        //[Description("View All the Flashcards in the current stack")]
+        //ViewAllFlashcardsInStack,
+        //[Description("Create a new Flashcard in the current stack")]
+        //CreateFlashcardInStack,
+        //[Description("Edit a Flashcard in the current stack")]
+        //EditFlashcard,
+        //[Description("Delete a Flashcard in the current stack")]
+        //DeleteFlashcard,
+        [Description("Delete Stack")]
+        DeleteStack,
     }
 }
