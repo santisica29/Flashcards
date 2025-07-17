@@ -54,6 +54,25 @@ internal class StackController
 
         if (affectedRows > 0) Console.WriteLine("Deleted succesfully");
         else Console.WriteLine("Something went wrong");
+    }
 
+    internal void UpdateStack()
+    {
+        var list = _databaseManager.GetAllStacks();
+
+        var stackToUpdate = AnsiConsole.Prompt(
+            new SelectionPrompt<CardStack>()
+            .Title("Select a [green]session[/] to update:")
+            .UseConverter(cs => cs.Name)
+            .AddChoices(list));
+
+        var newName = AnsiConsole.Prompt(
+            new TextPrompt<string>("Choose a new name for the stack"));
+
+        var newStack = new CardStack(newName);
+        var affectedRows = _databaseManager.UpdateStack(newStack);
+
+        if (affectedRows > 0) Console.WriteLine("Updated succesfully");
+        else Console.WriteLine("Something went wrong");
     }
 }

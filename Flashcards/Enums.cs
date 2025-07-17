@@ -34,5 +34,7 @@ internal class Enums
         //DeleteFlashcard,
         [Description("Delete Stack")]
         DeleteStack,
+        [Description("Update Stack")]
+        UpdateStack,
     }
 }
