@@ -30,17 +30,6 @@ public class UserInterface
                     break;
 
             }
-            ;
-            var answer = choice switch
-            {
-                MenuOptions.Exit => 
-                MenuOptions.ViewStacks => StacksMenu(),
-                MenuOptions.ViewFlashcards => FlashcardsMenu(),
-                MenuOptions.Study => throw new NotImplementedException(),
-                MenuOptions.ViewStudyData => throw new NotImplementedException(),
-                _ => throw new NotImplementedException(),
-            };
-
         }
 
     }
@@ -51,6 +40,32 @@ public class UserInterface
 
     internal void StacksMenu()
     {
-        
+        bool userWantsToReturnToMainMenu = false;
+
+        while (!userWantsToReturnToMainMenu)
+        {
+            var choice = AnsiConsole.Prompt(
+                new SelectionPrompt<StacksMenuOptions>()
+                .Title("Stacks Menu")
+                .UseConverter(e => Helpers.GetEnumDescription(e))
+                .AddChoices(Enum.GetValues<StacksMenuOptions>()));
+
+            switch (choice)
+            {
+                case StacksMenuOptions.Return:
+                    userWantsToReturnToMainMenu = true;
+                    break;
+                //case MenuOptions.ViewStacks:
+                //    StacksMenu();
+                //    break;
+                //case MenuOptions.ViewFlashcards:
+                //    FlashcardsMenu();
+                //    break;
+
+            }
+
+
+
+        }
     }
 }
