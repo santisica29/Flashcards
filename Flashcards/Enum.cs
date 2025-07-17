@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +11,15 @@ namespace Flashcards
     {
         public enum MenuOptions
         {
+            [Description("View Stack")]
             ViewStacks,
+            [Description("View Flashcards")]
             ViewFlashcards,
+            [Description("Study")]
             Study,
-            ViewStudyData
+            [Description("View Study Data")]
+            ViewStudyData,
+            Exit
         }
     }
 }
