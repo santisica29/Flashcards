@@ -30,8 +30,8 @@ internal class DatabaseManager
         }
     }
 
-    internal List<Stacks> ViewAllStacks()
-    {
+    //internal List<Stacks> ViewAllStacks()
+    //{
 
-    }
+    //}
 }
