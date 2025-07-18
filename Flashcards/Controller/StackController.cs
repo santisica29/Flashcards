@@ -1,18 +1,23 @@
 ﻿using Flashcards.Data;
 using Flashcards.Models;
+using Flashcards.Controller;
 using Spectre.Console;
 
 namespace Flashcards.Controller;
 internal class StackController
 {
     private readonly DatabaseManager _databaseManager = new();
+    private readonly FlashcardController flashcardController = new();
     internal void ViewStacks()
     {
+        Console.Clear();
         var list = _databaseManager.GetAllStacks();
 
         if (list.Count == 0)
         {
             AnsiConsole.MarkupLine("No data found.");
+            Console.ReadKey();
+            return;
         }
 
         foreach (var stack in list)
@@ -20,8 +25,8 @@ internal class StackController
             AnsiConsole.MarkupLine($"{stack.Id} {stack.Name}");
         }
 
+        AnsiConsole.MarkupLine("-------------------");
         Console.ReadKey();
-
     }
 
     internal void AddStack()
@@ -58,13 +63,7 @@ internal class StackController
 
     internal void UpdateStack()
     {
-        var list = _databaseManager.GetAllStacks();
-
-        var stackToUpdate = AnsiConsole.Prompt(
-            new SelectionPrompt<CardStack>()
-            .Title("Select a [green]session[/] to update:")
-            .UseConverter(cs => cs.Name)
-            .AddChoices(list));
+        var stackToUpdate = ChooseStack("Select a stack to update");
 
         var newName = AnsiConsole.Prompt(
             new TextPrompt<string>("Choose a new name for the stack"));
@@ -74,5 +73,27 @@ internal class StackController
 
         if (affectedRows > 0) Console.WriteLine("Updated succesfully");
         else Console.WriteLine("Something went wrong");
+    }
+
+    internal void SelectStack()
+    {
+        var stack = ChooseStack("Choose a stack to see it flashcards");
+
+        var listOfFlashcards = GetFlashcardsFromStack(stack);
+
+        
+    }
+
+    internal CardStack ChooseStack(string message, string color = "green")
+    {
+        var list = _databaseManager.GetAllStacks();
+
+        var stackSelected = AnsiConsole.Prompt(
+            new SelectionPrompt<CardStack>()
+            .Title($"[{color}] {message}")
+            .UseConverter(cs => cs.Name)
+            .AddChoices(list));
+
+        return stackSelected;
     }
 }

@@ -5,10 +5,10 @@ internal class Enums
 {
     public enum MenuOptions
     {
-        [Description("View Stack")]
-        ViewStacks,
-        [Description("View Flashcards")]
-        ViewFlashcards,
+        [Description("Manage Stacks")]
+        ManageStacks,
+        [Description("Manage Flashcards")]
+        ManageFlashcards,
         [Description("Study")]
         Study,
         [Description("View Study Data")]
@@ -18,8 +18,10 @@ internal class Enums
 
     public enum StacksMenuOptions
     {
-        [Description("Return to Main Menu")]
-        Return,
+        [Description("View Stacks")]
+        ViewStacks,
+        [Description("Select a Stack")]
+        SelectStack,
         [Description("Add a stack")]
         AddStack,
         //[Description("Change current stack")]
@@ -36,5 +38,8 @@ internal class Enums
         DeleteStack,
         [Description("Update Stack")]
         UpdateStack,
+        [Description("Return to Main Menu")]
+        Return,
+        
     }
 }

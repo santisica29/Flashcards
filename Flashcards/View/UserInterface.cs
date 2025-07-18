@@ -23,20 +23,17 @@ public class UserInterface
 
             switch (choice)
             {
+                case MenuOptions.ManageStacks:
+                    StacksMenu();
+                    break;
+                case MenuOptions.ManageFlashcards:
+                    FlashcardsMenu();
+                    break;
                 case MenuOptions.Exit:
                     isUserFinished = true;
                     break;
-                case MenuOptions.ViewStacks:
-                    _stackController.ViewStacks();
-                    StacksMenu();
-                    break;
-                case MenuOptions.ViewFlashcards:
-                    FlashcardsMenu();
-                    break;
-
             }
         }
-
     }
     internal void FlashcardsMenu()
     {
@@ -45,6 +42,7 @@ public class UserInterface
 
     internal void StacksMenu()
     {
+        Console.Clear();
         bool userWantsToReturnToMainMenu = false;
 
         while (!userWantsToReturnToMainMenu)
@@ -57,8 +55,11 @@ public class UserInterface
 
             switch (choice)
             {
-                case StacksMenuOptions.Return:
-                    userWantsToReturnToMainMenu = true;
+                case StacksMenuOptions.ViewStacks:
+                    _stackController.ViewStacks();
+                    break;
+                case StacksMenuOptions.SelectStack:
+                    _stackController.SelectStack();
                     break;
                 case StacksMenuOptions.AddStack:
                     _stackController.AddStack();
@@ -69,14 +70,10 @@ public class UserInterface
                 case StacksMenuOptions.UpdateStack:
                     _stackController.UpdateStack();
                     break;
-                    //case MenuOptions.ViewFlashcards:
-                    //    FlashcardsMenu();
-                    //    break;
-
+                case StacksMenuOptions.Return:
+                    userWantsToReturnToMainMenu = true;
+                    break;
             }
-
-
-
         }
     }
 }
