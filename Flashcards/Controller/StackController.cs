@@ -79,9 +79,16 @@ internal class StackController
     {
         var stack = ChooseStack("Choose a stack to see it flashcards");
 
-        var listOfFlashcards = GetFlashcardsFromStack(stack);
+        var listOfFlashcards = GetFlashcardsFromStack(stack.Id);
 
         
+    }
+
+    internal List<Flashcard> GetFlashcardsFromStack(int stackId)
+    {
+        var flashcards = DatabaseManager.FetchFlashcardsByStackId(stackId);
+
+        return flashcards;
     }
 
     internal CardStack ChooseStack(string message, string color = "green")
