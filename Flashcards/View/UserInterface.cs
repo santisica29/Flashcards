@@ -58,9 +58,9 @@ public class UserInterface
                 case StacksMenuOptions.ViewStacks:
                     _stackController.ViewStacks();
                     break;
-                case StacksMenuOptions.SelectStack:
-                    _stackController.SelectStack();
-                    break;
+                //case StacksMenuOptions.SelectStack:
+                //    _stackController.SelectStack();
+                //    break;
                 case StacksMenuOptions.AddStack:
                     _stackController.AddStack();
                     break;

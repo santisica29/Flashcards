@@ -63,33 +63,35 @@ internal class StackController
 
     internal void UpdateStack()
     {
-        var stackToUpdate = ChooseStack("Select a stack to update");
+        ViewStacks();
+
+        Console.WriteLine("Choose the id to delete it");
+        int id = Int32.Parse(Console.ReadLine());
 
         var newName = AnsiConsole.Prompt(
             new TextPrompt<string>("Choose a new name for the stack"));
 
-        var newStack = new CardStack(newName);
-        var affectedRows = _databaseManager.UpdateStack(newStack);
+        var affectedRows = _databaseManager.UpdateStack(id, newName);
 
         if (affectedRows > 0) Console.WriteLine("Updated succesfully");
         else Console.WriteLine("Something went wrong");
     }
 
-    internal void SelectStack()
-    {
-        var stack = ChooseStack("Choose a stack to see it flashcards");
+    //internal void SelectStack()
+    //{
+    //    var stack = ChooseStack("Choose a stack to see it flashcards");
 
-        var listOfFlashcards = GetFlashcardsFromStack(stack.Id);
+    //    var listOfFlashcards = GetFlashcardsFromStack(stack.Id);
 
         
-    }
+    //}
 
-    internal List<Flashcard> GetFlashcardsFromStack(int stackId)
-    {
-        var flashcards = DatabaseManager.FetchFlashcardsByStackId(stackId);
+    //internal List<Flashcard> GetFlashcardsFromStack(int stackId)
+    //{
+    //    var flashcards = DatabaseManager.FetchFlashcardsByStackId(stackId);
 
-        return flashcards;
-    }
+    //    return flashcards;
+    //}
 
     internal CardStack ChooseStack(string message, string color = "green")
     {

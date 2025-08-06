@@ -3,8 +3,8 @@
 namespace Flashcards.Controller;
 internal class FlashcardController
 {
-    internal List<FlashcardDTO> GetFlashcardsFromStack(CardStack stack)
-    {
+    //internal List<FlashcardDTO> GetFlashcardsFromStack(CardStack stack)
+    //{
         
-    }
+    //}
 }

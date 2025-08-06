@@ -62,12 +62,12 @@ internal class DatabaseManager
         return connection.Execute(deleteQuery, new {Id = id});
     }
 
-    internal int UpdateStack(CardStack newStack)
+    internal int UpdateStack(int id, string newName)
     {
         using var connection = new SqlConnection(_connectionString);
         connection.Open();
         var updateQuery = "UPDATE Stacks SET Name = @Name WHERE Id = @Id";
 
-        return connection.Execute(updateQuery, newStack);
+        return connection.Execute(updateQuery, new { id, Name = newName });
     }
 }
