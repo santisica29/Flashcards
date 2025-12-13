@@ -65,7 +65,7 @@ internal class StackController
     {
         ViewStacks();
 
-        Console.WriteLine("Choose the id to delete it");
+        Console.WriteLine("Choose the id to update it");
         int id = Int32.Parse(Console.ReadLine());
 
         var newName = AnsiConsole.Prompt(
