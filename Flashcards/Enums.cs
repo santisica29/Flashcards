@@ -15,7 +15,14 @@ internal class Enums
         ViewStudyData,
         Exit
     }
-
+    public enum FlashcardsMenuOptions
+    {
+        ViewFlashcards,
+        AddFlashcards,
+        DeleteFlashcards,
+        UpdateFlashcards,
+        Return
+    }
     public enum StacksMenuOptions
     {
         [Description("View Stacks")]

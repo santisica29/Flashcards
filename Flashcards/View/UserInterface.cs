@@ -7,6 +7,8 @@ namespace Flashcards.View;
 public class UserInterface
 {
     private readonly StackController _stackController = new();
+    private readonly FlashcardController _flashcardController = new();
+
     internal void MainMenu()
     {
         bool isUserFinished = false;
@@ -37,7 +39,29 @@ public class UserInterface
     }
     internal void FlashcardsMenu()
     {
-        throw new NotImplementedException();
+        Console.Clear(); 
+        bool isUserFinished = false;
+
+        while (!isUserFinished)
+        {
+            var choice = AnsiConsole.Prompt(
+                new SelectionPrompt<FlashcardsMenuOptions>()
+                .Title("Flashcards Menu")
+                .UseConverter(e => Helpers.GetEnumDescription(e))
+                .AddChoices(Enum.GetValues<FlashcardsMenuOptions>()));
+
+            switch (choice)
+            {
+                case FlashcardsMenuOptions.ViewFlashcards:
+                    _flashcardController.ViewFlashcards();
+                    break;
+                case FlashcardsMenuOptions.AddFlashcards:
+                    _flashcardController.AddFlashcard();
+                case FlashcardsMenuOptions.Return:
+                    isUserFinished = true;
+                    break;
+            }
+        }
     }
 
     internal void StacksMenu()

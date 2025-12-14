@@ -70,4 +70,13 @@ internal class DatabaseManager
 
         return connection.Execute(updateQuery, new { id, Name = newName });
     }
+    internal List<Flashcard> GetFlashcards()
+    {
+        using var connection = new SqlConnection(_connectionString);
+        connection.Open();
+        var selectQuery = "SELECT * FROM Flashcards";
+        var list = connection.Query<Flashcard>(selectQuery).ToList();
+
+        return list;
+    }
 }
